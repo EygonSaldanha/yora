@@ -172,7 +172,8 @@ export function AttendeeList() {
                 <TableCell>
                   <IconButton
                     transparent
-                    className="bg-black/20 border border-white/10 rounded-md p-1.5">
+                    className="bg-black/20 border border-white/10 rounded-md p-1.5"
+                  >
                     <MoreHorizontal className="size-4" />
                   </IconButton>
                 </TableCell>
@@ -186,7 +187,7 @@ export function AttendeeList() {
               Mostrando {attendees.length} de {total} itens
             </TableCell>
             <TableCell className="text-right" colSpan={3}>
-              <div className="bg-white inline-flex items-center gap-8">
+              <div className="inline-flex items-center gap-8">
                 <span>
                   Página {page} de {totalPages}
                 </span>
@@ -200,12 +201,14 @@ export function AttendeeList() {
                   </IconButton>
                   <IconButton
                     onClick={goToNextPage}
-                    disabled={page === totalPages}>
+                    disabled={page === totalPages}
+                  >
                     <ChevronRight className="size-4" />
                   </IconButton>
                   <IconButton
                     onClick={goToLastPage}
-                    disabled={page === totalPages}>
+                    disabled={page === totalPages}
+                  >
                     <ChevronsRight className="size-4" />
                   </IconButton>
                 </div>
