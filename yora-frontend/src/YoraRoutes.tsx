@@ -7,6 +7,7 @@ const YoraRoutes = () => {
     <BrowserRouter>
       <Routes>
         <Route Component={AttendeeList} path="/participantes" />
+        <Route Component={EventRegistrationPage} path="/EventRegistrationPage"/>
       </Routes>
     </BrowserRouter>
   );
