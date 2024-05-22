@@ -9,7 +9,7 @@ export function Header() {
         <NavLink href="/DashBoard">DashBoard</NavLink>
         <NavLink href="/participantes">Participantes</NavLink>
         <NavLink href="/Eventos">Eventos</NavLink>
-        <NavLink href="/participantes">Participantes</NavLink>
+        <NavLink href="/EventRegistrationPage">Inscrições</NavLink>
         <NavLink href="/participantes">Participantes</NavLink>
       </nav>
     </div>
