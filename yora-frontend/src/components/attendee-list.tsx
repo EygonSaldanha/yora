@@ -1,20 +1,7 @@
 import dayjs from "dayjs";
 import "dayjs/locale/pt-br";
 import relativeTime from "dayjs/plugin/relativeTime";
-import {
-  ChevronLeft,
-  ChevronRight,
-  ChevronsLeft,
-  ChevronsRight,
-  MoreHorizontal,
-  Search,
-} from "lucide-react";
 import { ChangeEvent, useEffect, useState } from "react";
-import { IconButton } from "./icon-button";
-import { Table } from "./table/table";
-import { TableCell } from "./table/table-cell";
-import { TableHeader } from "./table/table-header";
-import { TableRow } from "./table/table-row";
 import { TitleSearch } from "./titleSearch";
 import { DefaultTable } from "./table/defaultTable";
 
