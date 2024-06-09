@@ -9,8 +9,14 @@ import { Singup } from "./pages/login/singup";
 const YoraRoutes = () => {
   return (
     <>
-      {location.pathname === "/login" ? "" : <Header />}
-      {location.pathname === "/login" ?? <Header />}
+      {!(location.pathname === "/login" || location.pathname === "/login") ? (
+        <></>
+      ) : (
+        <Header />
+      )}
+      {(location.pathname === "/login" || location.pathname === "/login") ?? (
+        <Header />
+      )}
       <BrowserRouter>
         <Routes>
           <Route Component={AttendeeList} path="/participantes" />
