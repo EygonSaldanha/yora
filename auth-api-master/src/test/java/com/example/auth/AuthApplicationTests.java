@@ -1,10 +1,10 @@
-package com.java.yora_security;
+package com.example.auth;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class YoraSecurityApplicationTests {
+class AuthApplicationTests {
 
 	@Test
 	void contextLoads() {
