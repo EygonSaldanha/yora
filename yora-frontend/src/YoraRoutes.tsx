@@ -26,7 +26,7 @@ const YoraRoutes = () => {
           <Route element={<EventPage />} path="/eventpage/:id" />
           <Route
             Component={EventRegistrationPage}
-            path="/EventRegistrationPage"
+            path="/EventRegistrationPage/:id"
           />
         </Routes>
       </BrowserRouter>

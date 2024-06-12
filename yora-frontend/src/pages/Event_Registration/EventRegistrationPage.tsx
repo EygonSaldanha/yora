@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { EventRegistrationForm } from "./EventRegistrationForm";
+import { useParams } from "react-router-dom";
 
 interface Event {
   id: string;
@@ -14,10 +15,10 @@ export const EventRegistrationPage: React.FC = () => {
   const [event, setEvent] = useState<Event | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    const url =
-      "http://localhost:3333/events/c1d8f65c-d153-49b7-92d2-369798ebca7a";
+    const url = "http://localhost:3333/events/" + id;
 
     fetch(url)
       .then((response) => {
