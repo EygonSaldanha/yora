@@ -4,34 +4,29 @@ import { z } from "zod";
 import { prisma } from "../lib/prisma";
 import { BadRequest } from "./_errors/bad-request";
 
-export async function getEvent(app: FastifyInstance) {
+export async function getAllEvents(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().get(
-    "/events/:eventId",
+    "/list-events",
     {
       schema: {
-        summary: "Get an event",
+        summary: "Get all events",
         tags: ["events"],
-        params: z.object({
-          eventId: z.string().uuid(),
-        }),
         response: {
-          200: z.object({
-            event: z.object({
+          200: z.array(
+            z.object({
               id: z.string().uuid(),
               title: z.string(),
               slug: z.string(),
               details: z.string().nullable(),
               maximumAttendees: z.number().int().nullable(),
               attendeesAmount: z.number().int(),
-            }),
-          }),
+            })
+          ),
         },
       },
     },
     async (request, reply) => {
-      const { eventId } = request.params;
-
-      const event = await prisma.event.findUnique({
+      const events = await prisma.event.findMany({
         select: {
           id: true,
           title: true,
@@ -44,25 +39,22 @@ export async function getEvent(app: FastifyInstance) {
             },
           },
         },
-        where: {
-          id: eventId,
-        },
       });
 
-      if (event === null) {
-        throw new BadRequest("Event not found.");
+      if (!events.length) {
+        throw new BadRequest("No events found.");
       }
 
-      return reply.send({
-        event: {
+      return reply.send(
+        events.map((event) => ({
           id: event.id,
           title: event.title,
           slug: event.slug,
           details: event.details,
           maximumAttendees: event.maximumAttendees,
           attendeesAmount: event._count.attendees,
-        },
-      });
+        }))
+      );
     }
   );
 }

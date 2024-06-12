@@ -20,7 +20,7 @@ export function LoginForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<CreateUserFormData>({
     resolver: zodResolver(createUserFormSchema),
   });
   const [output, setOutput] = useState("");

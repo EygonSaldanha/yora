@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,13 +28,13 @@ export function SingUpForm() {
     });
 
   type CreateUserFormData = z.infer<typeof createUserFormSchema>;
-  const navigate = useNavigate();
+  //   const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<CreateUserFormData>({
     resolver: zodResolver(createUserFormSchema),
   });
   const [output, setOutput] = useState("");
