@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AttendeeList } from "./components/attendee-list";
-import { EventRegistrationPage } from "./components/Event_Registration/EventRegistrationPage";
 import { Header } from "./components/header";
+import { EventRegistrationPage } from "./pages/Event_Registration/EventRegistrationPage";
 import { Eventos } from "./pages/eventos/eventos";
 import { Login } from "./pages/login/login";
 import { Singup } from "./pages/login/singup";
@@ -9,14 +9,14 @@ import { Singup } from "./pages/login/singup";
 const YoraRoutes = () => {
   return (
     <>
-      {!(location.pathname === "/login" || location.pathname === "/login") ? (
+      {location.pathname === "/login" || location.pathname === "/login" ? (
         <></>
       ) : (
         <Header />
       )}
-      {(location.pathname === "/login" || location.pathname === "/login") ?? (
-        <Header />
-      )}
+      {/* {(location.pathname === "/login" || location.pathname === "/login") ?? (
+      )} */}
+      {/* <Header /> */}
       <BrowserRouter>
         <Routes>
           <Route Component={AttendeeList} path="/participantes" />
