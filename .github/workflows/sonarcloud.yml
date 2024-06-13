@@ -1,0 +1,26 @@
+name: Build
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure SonarScanner
+        run: |
+          echo "sonar.projectKey=EygonSaldanha_yora" >> sonar-project.properties
+          echo "sonar.organization=eygonsaldanha" >> sonar-project.properties
+          echo "sonar.sources=" >> sonar-project.properties
+          echo "sonar.tests=" >> sonar-project.properties
+          echo "sonar.verbose=true" >> sonar-project.properties
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
