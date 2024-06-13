@@ -7,6 +7,7 @@ import { Eventos } from "./pages/eventos/eventos";
 import { EventPage } from "./pages/eventos/eventPage";
 import { Login } from "./pages/login/login";
 import { Singup } from "./pages/login/singup";
+import EventAttendancePage from "./pages/Frequencia/EventAttendancePage";
 
 const YoraRoutes = () => {
   return (
@@ -24,10 +25,8 @@ const YoraRoutes = () => {
           <Route element={<Singup />} path="/singup" />
           <Route element={<CreateEvent />} path="/create-event" />
           <Route element={<EventPage />} path="/eventpage/:id" />
-          <Route
-            Component={EventRegistrationPage}
-            path="/EventRegistrationPage/:id"
-          />
+          <Route Component={EventRegistrationPage} path="/EventRegistrationPage/:id" />
+          <Route element={<EventAttendancePage/>} path="/frequencia"/>
         </Routes>
       </BrowserRouter>
     </>

@@ -19,7 +19,7 @@ const EventAttendancePage: React.FC = () => {
       <h1 className="text-2xl font-bold">Frequência</h1>
       <CheckInForm onSubmit={handleCheckIn} />
       <AttendanceAdmin attendees={attendees} />
-      <CertificateGenerator name="Pedro Sampaio" eventName="Evento Exemplo" />
+      <CertificateGenerator participants={attendees} eventName="Evento Exemplo" />
     </div>
   );
 };
