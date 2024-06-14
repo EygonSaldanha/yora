@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 /**
  * fazer backend para registrar usuario
@@ -42,6 +43,7 @@ export function SingUpForm() {
   function createUser(dada: any) {
     setOutput(JSON.stringify(dada, null, 2));
   }
+  const navigate = useNavigate();
   console.log("erross>>>>", errors);
   return (
     <form onSubmit={handleSubmit(createUser)}>
@@ -91,6 +93,7 @@ export function SingUpForm() {
               className="active:scale-[.98] active:duration-75 transition-all 
             hover:scale-[1.01]  ease-in-out transform py-4 bg-violet-500 rounded-xl 
             text-white font-bold text-lg "
+              onClick={() => navigate("/Eventos")}
               //TODO: fazer chamada para o backend para registrar e verificar se o email ja existe
               type="submit">
               Sign up

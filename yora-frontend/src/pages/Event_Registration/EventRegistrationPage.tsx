@@ -9,12 +9,12 @@ interface Event {
   maximumAttendees: number;
   attendeesAmount: number;
   details: string;
+  location: string;
 }
 
 export const EventRegistrationPage: React.FC = () => {
   const [event, setEvent] = useState<Event | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
@@ -35,19 +35,11 @@ export const EventRegistrationPage: React.FC = () => {
         }
         setEvent(eventData);
         setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
       });
   }, []);
 
   if (loading) {
     return <p>Carregando informações do evento...</p>;
-  }
-
-  if (error) {
-    return <p>Erro: {error}</p>;
   }
 
   return (

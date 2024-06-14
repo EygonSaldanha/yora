@@ -33,7 +33,9 @@ export function LoginForm() {
     <form onSubmit={handleSubmit(createUser)}>
       <div className="mt-8">
         <div className="flex flex-col">
-          <label className="text-lg font-medium">Email</label>
+          <label htmlFor="email" className="text-lg font-medium">
+            Email
+          </label>
           <input
             className="w-full rounded-xl p-4 mt-1 bg-transparent"
             type={"email"}
@@ -42,7 +44,9 @@ export function LoginForm() {
           />
         </div>
         <div className="flex flex-col mt-4">
-          <label className="text-lg font-medium">Password</label>
+          <label htmlFor="password" className="text-lg font-medium">
+            Password
+          </label>
           <input
             className="w-full rounded-xl p-4 mt-1 bg-transparent"
             placeholder="Enter your email"
@@ -69,8 +73,7 @@ export function LoginForm() {
           hover:scale-[1.01]  ease-in-out transform py-4 bg-violet-500 rounded-xl 
           text-white font-bold text-lg "
             type="submit"
-            // onClick={() => navigate("/participantes")}
-          >
+            onClick={() => navigate("/Eventos")}>
             Sign in
           </button>
           <GoogleButton />
